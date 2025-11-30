@@ -12,6 +12,9 @@ class Boss:
 
     def deal_damage(self, player):
         pass
+
+    def heal_damage(self, amount):
+        self.health += amount
     
     def is_alive(self):
         return self.health > 0
@@ -34,3 +37,9 @@ class Player:
     def is_alive(self):
         print(f"Current health: {self.health}")
         return True if self.health > 0 else False
+    
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
