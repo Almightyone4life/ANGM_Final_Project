@@ -27,6 +27,9 @@ class Player:
 
     def deal_damage(self, enemy: Boss, amount: int):
         enemy.take_damage(amount)
+    
+    def heal_damage(self, amount: int):
+        self.health += amount
 
     def is_alive(self):
         print(f"Current health: {self.health}")
