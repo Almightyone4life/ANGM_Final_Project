@@ -53,3 +53,10 @@ while running:
     
     #player attack input
     player.deal_damage(boss, player_damage + (random.randint(-2, 5)))
+
+def main():
+    winner = play_game()
+
+def play_game():
+
+def play_round():
