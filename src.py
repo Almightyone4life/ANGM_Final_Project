@@ -11,8 +11,8 @@ class Boss:
     def take_damage(self, amount):
         self.health -= amount
 
-    def deal_damage(self, player, amount):
-        player.take_damage(amount)
+    def deal_damage(self, amount: int):
+        return amount + (random.randint(-3, 5))
 
     def heal_damage(self, amount):
         self.health += amount
@@ -68,10 +68,14 @@ def play_round():
     player_pick = input("Player's turn: A = Attack, H = heal")
     if player_pick.lower() == 'a':
         damage = player.deal_damage(boss, player_damage + (random.randint(-2, 5)))
+        #boss.take_damage(damage)
         print(f"{player.name} attacks the {boss.name} for {damage} damage.")
     elif player_pick.lower() == 'h':
         player.heal_damage(15 + (random.randint(0, 5)))
     
     print(f"{boss.name}'s turn:")
+    Bdamage = boss.deal_damage(boss_damage)
+    player.take_damage(Bdamage)
+
 def round_results():
     pass
