@@ -58,5 +58,20 @@ def main():
     winner = play_game()
 
 def play_game():
+    while player.is_alive() and boss.is_alive():
+        play_round()
+        round_results()
 
 def play_round():
+    round = 1
+    print(f"-Round {round}-")
+    player_pick = input("Player's turn: A = Attack, H = heal")
+    if player_pick.lower() == 'a':
+        damage = player.deal_damage(boss, player_damage + (random.randint(-2, 5)))
+        print(f"{player.name} attacks the {boss.name} for {damage} damage.")
+    elif player_pick.lower() == 'h':
+        player.heal_damage(15 + (random.randint(0, 5)))
+    
+    print(f"{boss.name}'s turn:")
+def round_results():
+    pass
