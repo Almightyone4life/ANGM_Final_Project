@@ -45,23 +45,26 @@ boss = Boss("Dragon", 300, "Claws")
 player_damage = 20
 boss_damage = 25
 
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
+#running = True
+#while running:
+ #   for event in pygame.event.get():
+  #      if event.type == pygame.QUIT:
+   #         running = False
     
     #player attack input
-    player.deal_damage(boss, player_damage + (random.randint(-2, 5)))
+    #player.deal_damage(boss, player_damage + (random.randint(-2, 5)))
 
 def main():
     winner = play_game()
+    print(f"The winner is {winner.name}.")
 
 def play_game():
     while player.is_alive() and boss.is_alive():
         play_round()
         round_results()
-
+    if player.is_alive():
+        print(F"{player.name} wins.")
+        return player
 def play_round():
     round = 1
     print(f"-Round {round}-")
