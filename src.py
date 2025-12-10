@@ -78,4 +78,5 @@ def play_round():
     player.take_damage(Bdamage)
 
 def round_results():
-    pass
+    print(f"{player.name} has {player.health} health remaining.")
+    print(f"{boss.name} has {boss.health} health remaining.")
