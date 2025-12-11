@@ -1,5 +1,6 @@
 import random
 import math
+import time
 #import pygame
 
 class Boss:
@@ -45,6 +46,11 @@ boss = Boss("Dragon", 300, "Claws")
 player_damage = 20
 boss_damage = 20
 
+
+
+
+Phealth_msg = (f"{player.name} has {player.health} health remaining.\n")
+
 #running = True
 #while running:
  #   for event in pygame.event.get():
@@ -58,9 +64,15 @@ boss_damage = 20
 def main():
     winner = play_game()
     if winner == 0:
-        print("The Hero and the Dragon have both slain each other.")
+        tie_msg = ("The Hero and the Dragon have both slain each other.")
+        for char in tie_msg:
+            print(char, end='', flush=True)
+            time.sleep(0.5)
     else:
-        print(f"The winner is the {winner}.")
+        win_msg = (f"The winner is the {winner}.")
+        for char in win_msg:
+            print(char, end='', flush=True)
+            time.sleep(0.1)
 
 def play_game():
     round = int (1)
@@ -77,23 +89,45 @@ def play_game():
         return 0
     
 def play_round():
-    player_pick = input("Player's turn: A = Attack, H = heal\n")
+    player_pick = input("Player's turn: A = Attack, H = heal, P = Surrender\n")
     if player_pick.lower() == 'a':
-        damage = player.deal_damage(boss, player_damage + (random.randint(-2, 5)))
+        player.deal_damage(boss, player_damage + (random.randint(-2, 5)))
         #boss.take_damage(damage)
-        print(f"{player.name} attacks the {boss.name}")
+        Att_msg = (f"{player.name} attacks the {boss.name}\n")
+        for char in Att_msg:
+            print(char, end='', flush=True)
+            time.sleep(0.03)
     elif player_pick.lower() == 'h':
         player.heal_damage(20 + (random.randint(1, 5)))
+    elif player_pick.lower() == 'p':
+        player.take_damage(player.health)
+        Surr_msg = (f"{player.name} has surrendered!\n")
+        for char in Surr_msg:
+            print(char, end='', flush=True)
+            time.sleep(0.03)
+        return
     
-    print(f"{boss.name}'s turn:")
+    Bturn_msg = (f"{boss.name}'s turn:\n")
+    for char in Bturn_msg:
+        print(char, end='', flush=True)
+        time.sleep(0.03)
     Bdamage = boss.deal_damage(boss_damage)
-    print(f"{boss.name} attacks {player.name}")
+    Batt_msg =(f"{boss.name} attacks {player.name}\n")
+    for char in Batt_msg:
+        print(char, end='', flush=True)
+        time.sleep(0.03)
     player.take_damage(Bdamage)
     
 
 def round_results():
-    print(f"{player.name} has {player.health} health remaining.")
-    print(f"{boss.name} has {boss.health} health remaining.")
+    Phealth_msg = (f"{player.name} has {player.health} health remaining.\n")
+    for char in Phealth_msg:
+        print(char, end='', flush=True)
+        time.sleep(0.03)
+    Bhealth_msg = (f"{boss.name} has {boss.health} health remaining.\n")
+    for char in Bhealth_msg:
+        print(char, end='', flush=True)
+        time.sleep(0.03)
 
 if __name__ == "__main__":
     main()
