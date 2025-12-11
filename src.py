@@ -127,6 +127,10 @@ def play_round():
         
     elif player_pick.lower() == 'h':
         player.heal_damage(25 + (random.randint(0, 15)))
+        Heal_msg = (f"{player.name} tends to their wounds.\n")
+        for char in Heal_msg:
+            print(char, end='', flush=True)
+            time.sleep(0.03)
     elif player_pick.lower() == 'p':
         player.take_damage(player.health)
         Surr_msg = (f"{player.name} has surrendered!\n")
