@@ -77,6 +77,19 @@ def main():
 
 def play_game():
     round = int (1)
+    intro_msg = (f"The {player.name} enters the lair to face off against the {boss.name}.\n")
+    for char in intro_msg:
+        print(char, end='', flush=True)
+        time.sleep(0.02)
+    Phealth_msg = (f"{player.name} has {player.health} health remaining.\n")
+    for char in Phealth_msg:
+        print(char, end='', flush=True)
+        time.sleep(0.02)
+    Bhealth_msg = (f"{boss.name} has {boss.health} health remaining.\n")
+    for char in Bhealth_msg:
+        print(char, end='', flush=True)
+        time.sleep(0.02)
+    print("")
     while player.is_alive() and boss.is_alive():
         print(f"-Round {round}-")
         play_round()
